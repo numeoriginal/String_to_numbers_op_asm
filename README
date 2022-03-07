@@ -1,0 +1,32 @@
+52 45 41 44 4D 45
+
+Despre implementare:
+
+-Functia atoi;
+	Primim stringul si pentru inceput verificam daca primul byte din string este '-' pentru a sti la iesirea din functie,
+	daca este cazul sa negam numaraul sau nu.
+	Iteram byte cu byte cat nu ajunge la \0 , si scadem 48 din valoarea char curent pentru a obtine valoare in decimal
+	ar acestuia , in asci table 0 fiind 48 si 9  57 inmultind la 1,10.. pentru crearea numarului.
+	La final daca suntem pe cazul negativ, negam numarul obtinut mai sus.
+	Ar fi fost o practica buna daca faceam o verificare <48 && >57 dar cum stiam ca nu primim si alte caractere era redundant
+
+-Functii de suma, scadere ,inmultire, divizare
+
+	Denumirea spune tot, am incercat sa implementez cu mai multe functii pentru a exersa folosirea acestora ,
+	dar am avut niste probleme, posibil undifined behavior sau greseam eu ceva la functia de divizare.
+	Registrii erau curatiti inainte de operatie, xchg , cdq totul mergea bine si dupa operatia de idiv
+	imi punea in registrul edx valoare de la eax si eax il seta pe 0, am scris acelasi cod in 
+	blocul de parcurgere a arborelui si a functionar calumea.
+
+-Functia de traversare:
+
+	O traversare recursiva cu stiva in preordine a arborelui, atata timp cat nu este nul apelam recursiv pentru ramura stanga,
+	si dupa pentru ramura dreapta, efectuand in acelasi timp calcule. Stiind ca in radacina o sa avem mereu operanzi,
+	era destul sa determinam care este acesta , sa facem operatiile cu valorile din frunze si sa suprascriem valoare din
+	arborele radacina curent, recursiv acelasi lucru se propaga pentru tot arborele.La iesirea din tot subarbore stang 
+	am facut un push pe stiva a valorii numerice obtinute in urma calculelor in subarborele stang pentru a nu pierde
+	aceasta valoare in urma parcurgerii subarborelui drept.
+
+-Rezultatul final:
+ 	Este valoare din root, adica rezultatul calculelor, returnat de functia de traversare in registrul eax 
+
